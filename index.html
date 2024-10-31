@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun</title>
+    <style>
+        body {
+            background-color: #ffe6f2;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .birthday-card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 300px;
+            position: relative;
+        }
+        h1 {
+            color: #ff4d94;
+            font-size: 2.5em;
+            margin: 0;
+        }
+        p {
+            color: #333;
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .ribbon {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 30px;
+            background-color: #ff4d94;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            line-height: 30px;
+        }
+        .heart {
+            color: #ff4d94;
+            font-size: 50px;
+            margin: 10px 0;
+        }
+        #photo-preview {
+            margin-top: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            display: none; /* Initially hidden */
+        }
+        .upload-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="birthday-card">
+        <div class="ribbon">Hi we are Shilite</div>
+        <div class="heart"></div>
+        <div class="text">hopeless romantic gang</div>
+        <p>brat with love</p>
+        <div class="upload-container">
+            <input type="file" id="imageInput" accept="image/*">
+            <img id="photo-preview" src="" alt="Preview Foto">
+        </div>
+    </div>
+
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const photoPreview = document.getElementById('photo-preview');
+
+        imageInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    photoPreview.src = event.target.result;
+                    photoPreview.style.display = 'block'; // Show the image
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
